@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Mulzac Edition — Bulova A-11 Hack Watch | Pitch Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Barlow+Condensed:wght@300;400;500;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a08;
+    --off-black: #111110;
+    --charcoal: #1c1c1a;
+    --mid: #2e2e2b;
+    --gold: #c8922a;
+    --gold-light: #e8b84b;
+    --gold-pale: #f5d98a;
+    --red: #c0362c;
+    --ivory: #f4f0e6;
+    --warm-white: #faf8f2;
+    --grey: #8a8780;
+    --light-grey: #b8b5ae;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--ivory);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 48px;
+    background: rgba(10,10,8,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,146,42,0.15);
+  }
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--light-grey);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* SLIDE BASE */
+  .slide {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 80px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* SLIDE NUMBER */
+  .slide-num {
+    position: absolute;
+    top: 90px;
+    right: 80px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    opacity: 0.6;
+  }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 32px 0;
+  }
+  .divider.red { background: var(--red); }
+
+  /* ==================
+     SLIDE 01: COVER
+  ================== */
+  #slide-01 {
+    background: var(--black);
+    justify-content: flex-end;
+    padding-bottom: 120px;
+  }
+
+  .cover-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(200,146,42,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 80% at 90% 80%, rgba(192,54,44,0.04) 0%, transparent 60%);
+  }
+
+  .cover-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(200,146,42,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,146,42,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 30%, transparent 80%);
+  }
+
+  .cover-year-marker {
+    position: absolute;
+    top: 130px;
+    right: 80px;
+    text-align: right;
+  }
+  .cover-year-marker .year {
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(200,146,42,0.2);
+    line-height: 1;
+    display: block;
+  }
+  .cover-year-marker .year-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    opacity: 0.6;
+  }
+
+  .cover-content {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+  }
+
+  .cover-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .cover-eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 1.0;
+    color: var(--warm-white);
+    margin-bottom: 8px;
+  }
+  .cover-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .cover-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--light-grey);
+    margin-bottom: 40px;
+    line-height: 1.3;
+  }
+
+  .cover-meta {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--grey);
+    line-height: 2;
+  }
+
+  .red-tail-stripe {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent 0%, var(--red) 20%, var(--red) 80%, transparent 100%);
+  }
+
+  /* ==================
+     SLIDE 02: THE INTERSECTION
+  ================== */
+  #slide-02 {
+    background: var(--off-black);
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .col-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .col-body {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--light-grey);
+    margin-bottom: 24px;
+  }
+
+  .stat-row {
+    display: flex;
+    gap: 48px;
+    margin-top: 40px;
+  }
+  .stat-item {}
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-top: 6px;
+  }
+
+  .col-divide {
+    width: 1px;
+    background: rgba(200,146,42,0.2);
+    height: 100%;
+    position: absolute;
+    left: 50%;
+  }
+
+  .versus-badge {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 64px;
+    height: 64px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--black);
+    z-index: 2;
+  }
+
+  /* ==================
+     SLIDE 03: THE MAN
+  ================== */
+  #slide-03 {
+    background: var(--charcoal);
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 40px;
+    margin-top: 20px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold), rgba(200,146,42,0.1));
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+  .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+  .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+  .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+  .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+  .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+  .timeline-item:nth-child(6) { animation-delay: 0.6s; }
+
+  .timeline-dot {
+    position: absolute;
+    left: -44px;
+    top: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--gold);
+  }
+  .timeline-dot.red { background: var(--red); border-color: var(--red); }
+
+  .timeline-year {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .timeline-event {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--warm-white);
+    margin-bottom: 6px;
+  }
+  .timeline-detail {
+    font-size: 13px;
+    color: var(--light-grey);
+    line-height: 1.6;
+  }
+
+  .pullquote {
+    border-left: 3px solid var(--gold);
+    padding-left: 28px;
+    margin: 32px 0;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--ivory);
+  }
+  .pullquote cite {
+    display: block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-style: normal;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 12px;
+  }
+
+  /* ==================
+     SLIDE 04: THE WATCH
+  ================== */
+  #slide-04 {
+    background: var(--black);
+  }
+
+  .watch-feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    margin-top: 40px;
+    background: rgba(200,146,42,0.1);
+  }
+
+  .watch-feature {
+    background: var(--off-black);
+    padding: 36px 32px;
+    transition: background 0.3s;
+  }
+  .watch-feature:hover { background: var(--charcoal); }
+
+  .feature-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+  .feature-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .feature-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--warm-white);
+    margin-bottom: 12px;
+  }
+  .feature-desc {
+    font-size: 13px;
+    color: var(--light-grey);
+    line-height: 1.7;
+  }
+
+  .watch-spec-strip {
+    display: flex;
+    gap: 0;
+    margin-top: 2px;
+  }
+  .spec {
+    flex: 1;
+    background: var(--mid);
+    padding: 24px 28px;
+    border-right: 2px solid var(--black);
+  }
+  .spec:last-child { border-right: none; }
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--gold-light);
+  }
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-top: 4px;
+  }
+
+  /* ==================
+     SLIDE 05: NARRATIVE
+  ================== */
+  #slide-05 {
+    background: var(--off-black);
+  }
+
+  .story-beat {
+    display: flex;
+    gap: 48px;
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(200,146,42,0.1);
+  }
+  .story-beat:last-child { border-bottom: none; margin-bottom: 0; }
+
+  .beat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 900;
+    color: rgba(200,146,42,0.15);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 80px;
+    text-align: right;
+  }
+  .beat-content {}
+  .beat-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--warm-white);
+    margin-bottom: 12px;
+  }
+  .beat-body {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--light-grey);
+  }
+  .beat-tag {
+    display: inline-block;
+    margin-top: 12px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(200,146,42,0.3);
+    padding: 4px 12px;
+  }
+
+  /* ==================
+     SLIDE 06: DESIGN
+  ================== */
+  #slide-06 {
+    background: var(--charcoal);
+  }
+
+  .design-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 40px;
+  }
+
+  .design-element {
+    padding: 36px;
+    border: 1px solid rgba(200,146,42,0.15);
+    position: relative;
+    overflow: hidden;
+  }
+  .design-element::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--gold);
+  }
+
+  .design-element-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .design-element-main {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--warm-white);
+    margin-bottom: 12px;
+  }
+  .design-element-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--light-grey);
+  }
+
+  .color-swatches {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    align-items: center;
+  }
+  .swatch {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: relative;
+  }
+  .swatch-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--grey);
+    margin-top: 6px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .swatch-wrap { text-align: center; }
+
+  .edition-options {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .edition-opt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(200,146,42,0.08);
+    font-size: 13px;
+  }
+  .edition-opt-name { color: var(--ivory); font-weight: 400; }
+  .edition-opt-val { 
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold);
+  }
+
+  /* ==================
+     SLIDE 07: AUDIENCE
+  ================== */
+  #slide-07 {
+    background: var(--black);
+  }
+
+  .audience-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  .audience-card {
+    padding: 32px 28px;
+    background: var(--off-black);
+    border-top: 3px solid var(--gold);
+    position: relative;
+  }
+  .audience-card.primary { border-top-color: var(--gold); }
+  .audience-card.secondary { border-top-color: var(--red); }
+  .audience-card.tertiary { border-top-color: var(--grey); }
+
+  .card-tier {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 10px;
+  }
+  .card-audience {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--warm-white);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .card-items {
+    list-style: none;
+    font-size: 13px;
+    color: var(--light-grey);
+    line-height: 2;
+  }
+  .card-items li::before {
+    content: '— ';
+    color: var(--gold);
+  }
+
+  /* ==================
+     SLIDE 08: PRESS
+  ================== */
+  #slide-08 {
+    background: var(--off-black);
+  }
+
+  .press-angles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  .press-angle {
+    padding: 28px 32px;
+    background: var(--charcoal);
+    border-left: 2px solid transparent;
+    transition: border-color 0.3s;
+  }
+  .press-angle:hover { border-left-color: var(--gold); }
+
+  .press-outlet-type {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .press-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--warm-white);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .press-pitch {
+    font-size: 13px;
+    color: var(--light-grey);
+    line-height: 1.7;
+  }
+  .press-outlets {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--grey);
+    margin-top: 12px;
+  }
+
+  /* ==================
+     SLIDE 09: CAMPAIGN
+  ================== */
+  #slide-09 {
+    background: var(--charcoal);
+  }
+
+  .campaign-hero {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 60px 40px;
+    border: 1px solid rgba(200,146,42,0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  .campaign-hero::before {
+    content: '15,000';
+    position: absolute;
+    font-family: 'Playfair Display', serif;
+    font-size: 200px;
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(200,146,42,0.06);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .campaign-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .campaign-subtitle-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--light-grey);
+    position: relative;
+  }
+
+  .campaign-phases {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: rgba(200,146,42,0.1);
+  }
+
+  .phase {
+    background: var(--off-black);
+    padding: 28px 24px;
+  }
+  .phase-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .phase-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--warm-white);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .phase-items {
+    font-size: 12px;
+    color: var(--light-grey);
+    line-height: 1.9;
+    list-style: none;
+  }
+  .phase-items li::before {
+    content: '· ';
+    color: var(--gold);
+  }
+
+  /* ==================
+     SLIDE 10: THE ASK
+  ================== */
+  #slide-10 {
+    background: var(--black);
+  }
+
+  .ask-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 40px;
+    align-items: start;
+  }
+
+  .ask-list {
+    list-style: none;
+  }
+  .ask-item {
+    display: flex;
+    gap: 20px;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(200,146,42,0.1);
+  }
+  .ask-item:first-child { border-top: 1px solid rgba(200,146,42,0.1); }
+
+  .ask-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    flex-shrink: 0;
+    width: 24px;
+  }
+  .ask-text {}
+  .ask-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--warm-white);
+    margin-bottom: 6px;
+  }
+  .ask-desc {
+    font-size: 13px;
+    color: var(--light-grey);
+    line-height: 1.7;
+  }
+
+  .contact-block {
+    padding: 48px;
+    background: var(--off-black);
+    border: 1px solid rgba(200,146,42,0.2);
+  }
+  .contact-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .contact-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--warm-white);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .contact-body {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--light-grey);
+    margin-bottom: 32px;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--black);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 16px 36px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    margin-bottom: 16px;
+  }
+  .cta-button:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+  }
+
+  .medal-note {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--grey);
+    line-height: 1.7;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(200,146,42,0.1);
+  }
+
+  /* ==================
+     SLIDE 11: CLOSE
+  ================== */
+  #slide-11 {
+    background: var(--black);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 60vh;
+    padding: 80px;
+  }
+
+  .close-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+  .close-eyebrow::before, .close-eyebrow::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .close-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--warm-white);
+    max-width: 800px;
+    margin: 0 auto 24px;
+    line-height: 1.5;
+  }
+  .close-attr {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 60px;
+  }
+
+  .close-branding {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--grey);
+  }
+  .close-branding span { color: var(--gold); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* PAGE BREAK HELPERS for print */
+  @media print {
+    nav { display: none; }
+    .slide { page-break-after: always; min-height: 100vh; }
+  }
+
+  /* SECTION SEPARATOR */
+  .section-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.3;
+    margin: 0;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .slide { padding: 100px 32px 60px; }
+    nav { padding: 16px 24px; }
+    .cover-title { font-size: 44px; }
+    .two-col, .design-grid, .ask-grid { grid-template-columns: 1fr; gap: 40px; }
+    .audience-cards { grid-template-columns: 1fr; }
+    .campaign-phases { grid-template-columns: 1fr 1fr; }
+    .watch-feature-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">The Mulzac Edition</div>
+  <ul class="nav-links">
+    <li><a href="#slide-01">Cover</a></li>
+    <li><a href="#slide-02">The Idea</a></li>
+    <li><a href="#slide-03">The Man</a></li>
+    <li><a href="#slide-04">The Watch</a></li>
+    <li><a href="#slide-05">The Story</a></li>
+    <li><a href="#slide-06">Design</a></li>
+    <li><a href="#slide-07">Audience</a></li>
+    <li><a href="#slide-09">Campaign</a></li>
+    <li><a href="#slide-10">The Ask</a></li>
+  </ul>
+</nav>
+
+<!-- SLIDE 01: COVER -->
+<section class="slide" id="slide-01">
+  <div class="cover-bg"></div>
+  <div class="cover-grid"></div>
+  <div class="cover-year-marker">
+    <span class="year">1944</span>
+    <span class="year-label">Class 44-J · Tuskegee</span>
+  </div>
+  <div class="cover-content">
+    <div class="cover-eyebrow">A Collaboration Proposal</div>
+    <h1 class="cover-title">The <em>Mulzac</em><br>Edition</h1>
+    <p class="cover-subtitle">Bulova × Lt. Col. John Ira Mulzac, Sr.<br>Tuskegee Airman · Class 44-J · Brooklyn</p>
+    <div class="cover-meta">
+      Bulova A-11 Hack Watch · Limited Edition<br>
+      477th Bombardment Group Heritage Series<br>
+      Congressional Gold Medal Recipient, 2007
+    </div>
+  </div>
+  <div class="red-tail-stripe"></div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SLIDE 02: THE INTERSECTION -->
+<section class="slide" id="slide-02">
+  <div class="slide-num">02 / 10</div>
+  <div class="section-label">The Idea</div>
+  <h2 style="font-family:'Playfair Display',serif; font-size:48px; font-weight:900; margin-bottom:16px; line-height:1.05;">Two New York Institutions.<br><em style="color:var(--gold)">One Defining Moment.</em></h2>
+  <p style="font-size:15px; color:var(--light-grey); max-width:600px; line-height:1.8; margin-bottom:48px;">In 1942, a Brooklyn teenager enlisted to fly. In 1942, a New York watch company supplied the timepieces those pilots wore. This is their reunion.</p>
+  <div class="two-col" style="position:relative;">
+    <div>
+      <div class="section-label" style="margin-bottom:12px;">Bulova · Est. 1875</div>
+      <h3 class="col-heading" style="font-size:32px;">Founded on<br>Fifth Avenue</h3>
+      <p class="col-body">Joseph Bulova built his company in New York City, and by WWII, Bulova was one of three manufacturers contracted to produce the A-11 hack watch — the standard field watch issued to Allied pilots. Bulova's headquarters remain in New York City to this day.</p>
+      <div class="stat-row">
+        <div class="stat-item">
+          <div class="stat-num">1875</div>
+          <div class="stat-label">Founded, NYC</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">A-11</div>
+          <div class="stat-label">"Won The War"</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-label" style="margin-bottom:12px;">Lt. Col. Mulzac · Est. 1923</div>
+      <h3 class="col-heading" style="font-size:32px;">Made in<br>New York</h3>
+      <p class="col-body">Born in Baltimore, raised in Brooklyn — John Ira Mulzac, Sr. was a New York man through and through. He returned to Brooklyn after his service and spent his entire civilian career serving the city. He enlisted at 18, earned his wings at Tuskegee as Class 44-J, and went on to serve in three wars over 41 years.</p>
+      <div class="stat-row">
+        <div class="stat-item">
+          <div class="stat-num">15K</div>
+          <div class="stat-label">Flight Hours</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">41</div>
+          <div class="stat-label">Years Service</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SLIDE 03: THE MAN -->
+<section class="slide" id="slide-03">
+  <div class="slide-num">03 / 10</div>
+  <div class="section-label">The Man</div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px;">
+    <div>
+      <h2 style="font-family:'Playfair Display',serif; font-size:42px; font-weight:900; line-height:1.1; margin-bottom:24px;">Lt. Colonel<br><em style="color:var(--gold)">John Ira Mulzac, Sr.</em></h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">1923</div>
+          <div class="timeline-event">Born, Baltimore — Raised Brooklyn</div>
+          <div class="timeline-detail">Born at Johns Hopkins Hospital in Baltimore, Maryland. Brought to Brooklyn as a young child — raised and schooled there. Left high school at 17 to support his family, working as a radio technician at Fort Monmouth, NJ.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">1942–1944</div>
+          <div class="timeline-event">Tuskegee · Class 44-J</div>
+          <div class="timeline-detail">Enlisted at 18. Assigned to the 99th Fighter Squadron, then 332nd Fighter Group and 477th Bombardment Group. Earned his wings from Tuskegee Army Air Field — a graduate without a high school diploma.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot red"></div>
+          <div class="timeline-year">WWII · Korea · Vietnam</div>
+          <div class="timeline-event">Three Wars. One Pilot.</div>
+          <div class="timeline-detail">Flew the P-38 Lightning, B-25 Mitchell, C-119 Flying Boxcar, and C-97 Stratocruiser. Flew missions across three decades of American military service.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">1947–1967</div>
+          <div class="timeline-event">FDNY Lieutenant</div>
+          <div class="timeline-detail">Served 20 years with the New York City Fire Department, rising to Lieutenant. Activated twice for military duty during his FDNY tenure.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">1971–1983</div>
+          <div class="timeline-event">Sky Marshal · U.S. Customs</div>
+          <div class="timeline-detail">Among the first U.S. Federal Sky Marshals. Then 21 years as a U.S. Customs Inspector at JFK. Three separate careers. Three pensions.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2007</div>
+          <div class="timeline-event">Congressional Gold Medal</div>
+          <div class="timeline-detail">Honored at the U.S. Capitol by President George W. Bush alongside nearly 300 Tuskegee Airmen or their surviving widows.</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="pullquote">
+        "Where else could I have become a lieutenant colonel flying airplanes without even finishing high school?"
+        <cite>— Lt. Col. John Mulzac, U.S. Air Force Veterans in Blue</cite>
+      </div>
+      <div style="margin-top:40px; padding:32px; background:var(--mid); border-left:3px solid var(--red);">
+        <div class="section-label" style="margin-bottom:12px;">Family Legacy</div>
+        <p style="font-size:13px; color:var(--light-grey); line-height:1.8;">8 children — all college graduates. 4 daughters earned master's degrees. Son Robert became an FDNY Lieutenant. Grandson <strong style="color:var(--ivory)">Tobias Harris</strong> currently plays for the Detroit Pistons — a city with its own chapter in his grandfather's story (see slide 5). A granddaughter was accepted to the Naval Academy. His wife Beatrice pinned on his wings at graduation in 1944 — and was by his side for 55 years.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SLIDE 04: THE WATCH -->
+<section class="slide" id="slide-04">
+  <div class="slide-num">04 / 10</div>
+  <div class="section-label">The Watch</div>
+  <h2 style="font-family:'Playfair Display',serif; font-size:48px; font-weight:900; line-height:1.1; margin-bottom:8px;">The A-11 Hack<br><em style="color:var(--gold)">The Watch That Won The War</em></h2>
+  <p style="font-size:14px; color:var(--light-grey); max-width:560px; line-height:1.8; margin-bottom:0;">Bulova was one of three original manufacturers contracted to build the A-11 — the standard field watch issued to Allied pilots during WWII. Its hack feature allowed synchronized precision. The same precision that Tuskegee Airmen brought to every mission.</p>
+  <div class="watch-feature-grid">
+    <div class="watch-feature">
+      <div class="feature-icon">⏱</div>
+      <div class="feature-label">The Feature</div>
+      <div class="feature-title">The Hack</div>
+      <div class="feature-desc">Pilots pulled the crown to stop the seconds hand and synchronize watches before a mission. A small mechanical act that coordinated attacks with split-second timing. It was new technology in 1942 — and it was on every pilot's wrist.</div>
+    </div>
+    <div class="watch-feature">
+      <div class="feature-icon">✈</div>
+      <div class="feature-label">The Context</div>
+      <div class="feature-title">Issued to Pilots</div>
+      <div class="feature-desc">The A-11 was primarily issued to aviators — the same role John Mulzac trained for at Tuskegee. The watch and the pilot were born in the same moment in American history. This edition closes that loop.</div>
+    </div>
+    <div class="watch-feature">
+      <div class="feature-icon">🗽</div>
+      <div class="feature-label">The Heritage</div>
+      <div class="feature-title">New York to New York</div>
+      <div class="feature-desc">Bulova: founded in New York City, 1875, still headquartered there. John Mulzac: born Brooklyn, raised Brooklyn, served Brooklyn. This is a genuinely New York watch honoring a genuinely New York hero — not a borrowed association.</div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SLIDE 05: THE STORY -->
+<section class="slide" id="slide-05">
+  <div class="slide-num">05 / 10</div>
+  <div class="section-label">Why This Story Works</div>
+  <h2 style="font-family:'Playfair Display',serif; font-size:42px; font-weight:900; line-height:1.1; margin-bottom:40px;">Three Narrative<br><em style="color:var(--gold)">Pillars</em></h2>
+  <div class="story-beat">
+    <div class="beat-number">01</div>
+    <div class="beat-content">
+      <div class="beat-title">The Convergence</div>
+      <div class="beat-body">Two New York institutions — one a watch company on Fifth Avenue, one a teenager from Bed-Stuy — both answered America's call in the same year. Bulova produced the A-11 for the pilots of WWII. John Mulzac became one of those pilots. The watch that was made for men like him is now being made in his honor. That's not marketing. That's history closing a circle.</div>
+      <span class="beat-tag">Authenticity · Heritage · New York</span>
+    </div>
+  </div>
+  <div class="story-beat">
+    <div class="beat-number">02</div>
+    <div class="beat-content">
+      <div class="beat-title">The Hack as Metaphor</div>
+      <div class="beat-body">The "hack" feature — stopping time to synchronize with precision before launching a mission — is an extraordinary metaphor for what the Tuskegee Airmen did. Asked to prove their worth in a system designed to exclude them, they responded with discipline, precision, and an unbroken record of excellence. John Mulzac refused to bail out of a disabled aircraft at 2,000 feet. He brought it home. That's the hack watch embodied.</div>
+      <span class="beat-tag">Storytelling · Mission · Excellence</span>
+    </div>
+  </div>
+  <div class="story-beat">
+    <div class="beat-number">03</div>
+    <div class="beat-content">
+      <div class="beat-title">The Detroit Heist</div>
+      <div class="beat-body">This is the story that should be on the caseback.<br><br>
+      John Mulzac was stationed at Selfridge Field, Michigan — assigned to the 332nd Fighter Group as a radio technician, the top man in his unit, being prepared for overseas deployment. He wanted to fly. But the official path to pilot training required college credits he didn't have, and the Air Force system wasn't going to give him a way in.<br><br>
+      One Saturday, a friend was driving a truck into Detroit to pick up provisions for the base. Mulzac asked to ride along — didn't say why. His friend dropped him at the civilian induction center: the place where men came to enlist, not where serving soldiers applied for anything. Inside, two sergeants. A white sergeant told him no. A Black sergeant said: <em>"Go ahead, let him take the test. What difference does it make?"</em><br><br>
+      He took the test. His friend came back. They returned to base.<br><br>
+      Three weeks later, his commanding officer — Captain Tresville, West Point graduate — called him in. A letter had arrived ordering Mulzac to Biloxi, Mississippi to begin pilot training. Tresville tried to stop him: <em>"I have a good mind not to let you go. You're my top man."</em> Mulzac told him: <em>"Sir, I always want to be like you. I want to fly."</em><br><br>
+      Tresville let him go. Then he picked up the phone and called Detroit — and closed the loophole for everyone else. Mulzac's buddies found out and wanted to do the same. They were already too late.<br><br>
+      Captain Tresville was later killed in Italy. The advice he gave Mulzac as he left — <em>"there are old pilots and bold pilots, but no old, bold pilots"</em> — Mulzac carried for thirty years of flying.<br><br>
+      That act of quiet determination in a Detroit induction center, on a borrowed Saturday, is what made John Mulzac a pilot. His grandson Tobias Harris now plays for the Detroit Pistons — currently in his second stint in the city. The place that launched one legacy now hosts another.</div>
+      <span class="beat-tag">Detroit · Selfridge Field · Defiance · Full Circle · Tobias Harris</span>
+    </div>
+  </div>
+  <div class="story-beat">
+    <div class="beat-number">04</div>
+    <div class="beat-content">
+      <div class="beat-title">The Oral History Asset</div>
+      <div class="beat-body">A full 40-page oral history transcript exists — recorded for the National Park Service's Tuskegee Airmen Oral History Project in 2001. Stories of nearly bailing out over Alabama, meeting Dr. George Washington Carver, running a laundry business as a cadet, being roommates with "Chappie" James. These are cinematic, specific, human stories with primary-source documentation. Content that cannot be manufactured.</div>
+      <span class="beat-tag">Content · Documentation · Authenticity</span>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SLIDE 06: DESIGN -->
+<section class="slide" id="slide-06">
+  <div class="slide-num">06 / 10</div>
+  <div class="section-label">Watch Design Concept</div>
+  <h2 style="font-family:'Playfair Display',serif; font-size:42px; font-weight:900; line-height:1.1; margin-bottom:40px;">Every Detail<br><em style="color:var(--gold)">Tells the Story</em></h2>
+  <div class="design-grid">
+    <div class="design-element">
+      <div class="design-element-title">Dial Color</div>
+      <div class="design-element-main">Matte Black</div>
+      <div class="design-element-desc">Honoring the original A-11 specification and the signature black tails of the 477th Bombardment Group. White SuperLuminova numerals for maximum legibility — exactly as the original demanded.</div>
+      <div class="color-swatches">
+        <div class="swatch-wrap">
+          <div class="swatch" style="background:#0a0a08; border:1px solid #333;"></div>
+          <div class="swatch-label">Matte<br>Black</div>
+        </div>
+        <div class="swatch-wrap">
+          <div class="swatch" style="background:#f4f0e6;"></div>
+          <div class="swatch-label">Ivory<br>Lume</div>
+        </div>
+        <div class="swatch-wrap">
+          <div class="swatch" style="background:#c0362c;"></div>
+          <div class="swatch-label">Red Tail<br>Seconds</div>
+        </div>
+        <div class="swatch-wrap">
+          <div class="swatch" style="background:#c8922a;"></div>
+          <div class="swatch-label">Gold<br>Accent</div>
+        </div>
+      </div>
+    </div>
+    <div class="design-element">
+      <div class="design-element-title">Caseback</div>
+      <div class="design-element-main">Engraved Dedication</div>
+      <div class="design-element-desc">Replicating military spec text as Bulova's heritage editions do — with specific markings honoring Mulzac's service. Collector-grade documentation engraved in steel.</div>
+      <div class="edition-options">
+        <div class="edition-opt"><span class="edition-opt-name">Unit designation</span><span class="edition-opt-val">477th BOMBARDMENT GROUP</span></div>
+        <div class="edition-opt"><span class="edition-opt-name">Graduation class</span><span class="edition-opt-val">CLASS 44-J · TUSKEGEE</span></div>
+        <div class="edition-opt"><span class="edition-opt-name">Service period</span><span class="edition-opt-val">1942 – 1983</span></div>
+        <div class="edition-opt"><span class="edition-opt-name">Flight hours</span><span class="edition-opt-val">15,000 HRS</span></div>
+      </div>
+    </div>
+    <div class="design-element">
+      <div class="design-element-title">Strap</div>
+      <div class="design-element-main">Black NATO,<br>Red Stitching</div>
+      <div class="design-element-desc">Black nylon NATO strap with red edge stitching — a subtle nod to the Red Tails of the 332nd Fighter Group, of which Mulzac was part before the 477th. The red seconds hand and red stitching create visual coherence across the complete timepiece.</div>
+    </div>
+    <div class="design-element">
+      <div class="design-element-title">Edition Size</div>
+      <div class="design-element-main">477 or 992 Pieces</div>
+      <div class="design-element-desc">Number the edition to 477 — honoring the 477th Bombardment Group — or 992, the total number of pilots trained at Tuskegee Army Air Field. Each option carries a specific, verifiable historical weight. Numbered individually on the caseback.</div>
+      <div style="margin-top:20px; padding:16px; background:rgba(200,146,42,0.08); border-left:2px solid var(--gold);">
+        <div style="font-family:'Barlow Condensed',sans-serif; font-size:10px; letter-spacing:3px; color:var(--gold); margin-bottom:6px;">RECOMMENDATION</div>
+        <div style="font-size:13px; color:var(--light-grey); line-height:1.6;">477 pieces creates higher scarcity and collector urgency. 992 tells the broader Tuskegee story. Consider 477 for a premiere run with a subsequent 992-piece general edition.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SLIDE 07: AUDIENCE -->
+<section class="slide" id="slide-07">
+  <div class="slide-num">07 / 10</div>
+  <div class="section-label">Target Audiences</div>
+  <h2 style="font-family:'Playfair Display',serif; font-size:42px; font-weight:900; line-height:1.1; margin-bottom:8px;">Built-In Communities.<br><em style="color:var(--gold)">Ready to Receive the Story.</em></h2>
+  <p style="font-size:14px; color:var(--light-grey); max-width:560px; line-height:1.8; margin-bottom:0;">This edition sits at the intersection of three large, passionate, and deeply under-served collecting communities.</p>
+  <div class="audience-cards">
+    <div class="audience-card primary">
+      <div class="card-tier">Primary · Deepest Affinity</div>
+      <div class="card-audience">Military History &amp; Watch Collectors</div>
+      <ul class="card-items">
+        <li>Tuskegee Airmen organizations nationwide</li>
+        <li>WWII military watch collecting community</li>
+        <li>Veterans' groups and service organizations</li>
+        <li>Hodinkee, Worn & Wound, WatchTime readership</li>
+        <li>Military aviation museums and archives</li>
+      </ul>
+    </div>
+    <div class="audience-card secondary">
+      <div class="card-tier">Secondary · High Reach</div>
+      <div class="card-audience">African American Heritage &amp; New York</div>
+      <ul class="card-items">
+        <li>Brooklyn civic and cultural institutions</li>
+        <li>FDNY Museum — Mulzac is already honored there</li>
+        <li>NAACP, NAACP Legal Defense Fund community</li>
+        <li>HBCUs — Tuskegee University, Howard, Morehouse</li>
+        <li>African American press: The Root, Our Time Press, Essence</li>
+      </ul>
+    </div>
+    <div class="audience-card tertiary">
+      <div class="card-tier">Tertiary · Crossover</div>
+      <div class="card-audience">Sports Community &amp; NBA</div>
+      <ul class="card-items">
+        <li>Tobias Harris — grandson, Detroit Pistons, 14-year NBA career</li>
+        <li>Combined social reach: millions of followers</li>
+        <li>ESPN, The Athletic, Bleacher Report sports-culture crossover</li>
+        <li>NBA players with known interest in heritage and history</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SLIDE 08: PRESS -->
+<section class="slide" id="slide-08">
+  <div class="slide-num">08 / 10</div>
+  <div class="section-label">Press Strategy</div>
+  <h2 style="font-family:'Playfair Display',serif; font-size:42px; font-weight:900; line-height:1.1; margin-bottom:40px;">Four Distinct<br><em style="color:var(--gold)">Story Angles</em></h2>
+  <div class="press-angles">
+    <div class="press-angle">
+      <div class="press-outlet-type">Watch Media</div>
+      <div class="press-headline">"The Watch That Was Actually There"</div>
+      <div class="press-pitch">An A-11 tribute that isn't just inspired-by — it honors a documented Tuskegee Airman who flew the missions for which the original A-11 was issued. Authenticity no other tribute watch can claim.</div>
+      <div class="press-outlets">Hodinkee · Worn & Wound · WatchTime · ABlogToWatch</div>
+    </div>
+    <div class="press-angle">
+      <div class="press-outlet-type">African American Press</div>
+      <div class="press-headline">"Brooklyn Born, Wings Earned, Now Honored in Steel"</div>
+      <div class="press-pitch">A Brooklyn native, Congressional Gold Medal recipient, FDNY Lieutenant, and one of 992 pilots trained at Tuskegee — his story is preserved in a Bulova limited edition watch that carries his class designation in the caseback.</div>
+      <div class="press-outlets">Our Time Press · The Root · Essence · Amsterdam News</div>
+    </div>
+    <div class="press-angle">
+      <div class="press-outlet-type">New York Press</div>
+      <div class="press-headline">"Two NYC Institutions. One Watch."</div>
+      <div class="press-pitch">A Bed-Stuy native who flew three wars without finishing high school. A Midtown watch company that built the A-11. Both products of New York. The launch event at the FDNY Museum is the natural hook.</div>
+      <div class="press-outlets">NY Times Metro · NY Daily News · Brooklyn Eagle · NY Mag</div>
+    </div>
+    <div class="press-angle">
+      <div class="press-outlet-type">Sports & Culture</div>
+      <div class="press-headline">"The Watch Their Grandfather Would Have Worn"</div>
+      <div class="press-pitch">Tobias Harris — John Mulzac's grandson and current Detroit Piston — helps introduce a limited edition watch honoring the man who showed him what excellence looks like. The Detroit connection runs deep: his grandfather's entire flying career began with an unauthorized pilot test taken at a Detroit induction center on a borrowed Saturday in 1943. The city that made one Mulzac a pilot now watches another carry the name.</div>
+      <div class="press-outlets">ESPN · The Athletic · Bleacher Report · Sports Illustrated</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SLIDE 09: CAMPAIGN -->
+<section class="slide" id="slide-09">
+  <div class="slide-num">09 / 10</div>
+  <div class="section-label">Campaign Concept</div>
+  <div class="campaign-hero">
+    <div class="campaign-name">15,000 Hours</div>
+    <div class="campaign-subtitle-text">A campaign named for Lt. Col. Mulzac's total flight hours</div>
+  </div>
+  <div class="campaign-phases">
+    <div class="phase">
+      <div class="phase-num">Phase 01 · Pre-Launch</div>
+      <div class="phase-name">The Archive</div>
+      <ul class="phase-items">
+        <li>Short documentary film — NPS oral history as audio backbone</li>
+        <li>"150 Stories" social series — one story per 100 flight hours</li>
+        <li>Press seeding to watch media & African American press</li>
+        <li>Family interviews: Tobias Harris and the Mulzac family</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <div class="phase-num">Phase 02 · Launch Event</div>
+      <div class="phase-name">Brooklyn<br>& The Fire House</div>
+      <ul class="phase-items">
+        <li>Launch event at FDNY Museum, Manhattan</li>
+        <li>Secondary event at Brooklyn Historical Society</li>
+        <li>Family, veterans' organizations, press in attendance</li>
+        <li>Live oral history playback — his own voice, his own words</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <div class="phase-num">Phase 03 · Distribution</div>
+      <div class="phase-name">Channels &amp; Partners</div>
+      <ul class="phase-items">
+        <li>Bulova.com exclusive first 30 days</li>
+        <li>Tuskegee Airmen National Historical Museum as partner retailer</li>
+        <li>FDNY gift store for the NYC market</li>
+        <li>Long Island Watch and specialist retailers</li>
+        <li>Portion of proceeds to CAF Rise Above (Tuskegee education)</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <div class="phase-num">Phase 04 · Legacy</div>
+      <div class="phase-name">Living<br>Archive</div>
+      <ul class="phase-items">
+        <li>Watch box includes printed excerpt from 2001 oral history</li>
+        <li>QR code linking to full documentary and NPS archive</li>
+        <li>Certificate of authenticity referencing Class 44-J</li>
+        <li>Donation to HBCU aviation scholarship fund in his name</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SLIDE 10: THE ASK -->
+<section class="slide" id="slide-10">
+  <div class="slide-num">10 / 10</div>
+  <div class="section-label">The Ask</div>
+  <h2 style="font-family:'Playfair Display',serif; font-size:42px; font-weight:900; line-height:1.1; margin-bottom:8px;">What We're<br><em style="color:var(--gold)">Proposing</em></h2>
+  <div class="ask-grid">
+    <div>
+      <ul class="ask-list">
+        <li class="ask-item">
+          <div class="ask-num">01</div>
+          <div class="ask-text">
+            <div class="ask-title">Family Partnership Agreement</div>
+            <div class="ask-desc">The Mulzac family provides full access to the National Park Service oral history, family photographs, service records, and living family members — including grandson and Detroit Pistons forward Tobias Harris as a key ambassador.</div>
+          </div>
+        </li>
+        <li class="ask-item">
+          <div class="ask-num">02</div>
+          <div class="ask-text">
+            <div class="ask-title">Co-Developed Campaign</div>
+            <div class="ask-desc">A jointly produced "15,000 Hours" launch campaign across short documentary, social content, press events at the FDNY Museum and Brooklyn Historical Society, and a charitable component directed to HBCU aviation programs.</div>
+          </div>
+        </li>
+        <li class="ask-item">
+          <div class="ask-num">03</div>
+          <div class="ask-text">
+            <div class="ask-title">Edition Size &amp; Revenue Share</div>
+            <div class="ask-desc">A 477-piece premiere limited edition and/or 992-piece general edition, with a negotiated royalty to the Mulzac family and a portion of proceeds donated to the CAF Rise Above Tuskegee educational program.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <div class="contact-block">
+        <div class="contact-label">Why This Partnership Works for Bulova</div>
+        <div class="contact-title">Real History.<br>Real New York.<br>Real Story.</div>
+        <div class="contact-body">Bulova has already demonstrated appetite for military heritage collaboration — including an A-11 edition supporting the Veterans Watchmakers Initiative. The Mulzac Edition goes further: it isn't tribute watchmaking in the abstract. It honors a specific individual, documented in a National Park Service oral history, whose service directly coincided with the A-11's production and deployment.</div>
+        <p style="font-size:13px; color:var(--light-grey); line-height:1.8;">Congressional Gold Medal recipient. Three wars. FDNY Lieutenant. Federal Sky Marshal. Customs Inspector. 8 children, all college graduates. This is the most documented, most human, most New York story Bulova has never told.</p>
+        <div class="medal-note">
+          Congressional Gold Medal, 2007 · U.S. Capitol, presented by President George W. Bush<br>
+          Tuskegee Airmen Oral History Project · National Park Service, 2001<br>
+          U.S. Air Force Veterans in Blue, Volume III · Official Recognition
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SLIDE 11: CLOSE -->
+<section class="slide" id="slide-11">
+  <div class="close-eyebrow">Brooklyn Born · Wings Earned · Time Kept</div>
+  <div class="close-quote">
+    "There is no word in my vocabulary as 'failure.' It's 'try and try again.'"
+  </div>
+  <div class="close-attr">— Lt. Col. John Ira Mulzac, Sr. · Tuskegee Airman · Class 44-J · Brooklyn</div>
+  <div class="close-branding">
+    The <span>Mulzac</span> Edition<br>
+    <span style="font-size:16px; font-family:'Barlow Condensed',sans-serif; letter-spacing:4px; font-weight:400;">Bulova A-11 Hack Watch · Limited Edition</span>
+  </div>
+  <div class="red-tail-stripe" style="position:fixed; bottom:0; left:0; right:0; height:3px; background:linear-gradient(90deg, transparent, var(--red), transparent);"></div>
+</section>
+
+</body>
+</html>
