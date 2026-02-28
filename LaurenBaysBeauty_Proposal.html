@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Proposal — Lauren Bays Beauty</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5EFE6;
+    --taupe: #C8B8A2;
+    --blush: #D4A89A;
+    --espresso: #3B2F2F;
+    --dark: #2C2118;
+    --off-white: #FAF7F3;
+    --light-taupe: #EDE5DA;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--dark);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE TEXTURE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 1000;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+  }
+
+  /* ─── COVER ─── */
+  .cover {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    position: relative;
+    overflow: hidden;
+    background: var(--espresso);
+  }
+
+  .cover-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 30%, rgba(212,168,154,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 70% at 20% 80%, rgba(200,184,162,0.12) 0%, transparent 50%),
+      var(--espresso);
+  }
+
+  .cover-grid-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(200,184,162,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,184,162,0.06) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  .cover-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 80px 60px;
+    max-width: 1100px;
+  }
+
+  .cover-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(52px, 8vw, 110px);
+    line-height: 0.92;
+    color: var(--cream);
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.4s;
+  }
+
+  .cover-title em {
+    font-style: italic;
+    color: var(--blush);
+  }
+
+  .cover-sub {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(245,239,230,0.6);
+    max-width: 480px;
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.6s;
+  }
+
+  .cover-meta {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 80px 60px;
+    border-top: 1px solid rgba(200,184,162,0.15);
+    padding-top: 32px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.8s;
+  }
+
+  .cover-meta-item {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(200,184,162,0.6);
+  }
+
+  .cover-meta-item span {
+    display: block;
+    color: var(--cream);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: none;
+    margin-top: 4px;
+  }
+
+  .cover-deco {
+    position: absolute;
+    right: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 320px;
+    height: 420px;
+    border: 1px solid rgba(200,184,162,0.12);
+    border-radius: 200px;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeIn 1.2s ease forwards 0.6s;
+  }
+
+  .cover-deco::after {
+    content: '';
+    position: absolute;
+    inset: 20px;
+    border: 1px solid rgba(212,168,154,0.1);
+    border-radius: 200px;
+  }
+
+  /* ─── SECTION BASE ─── */
+  section {
+    padding: 100px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-full {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .eyebrow {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--taupe);
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(38px, 5vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--espresso);
+    margin-bottom: 28px;
+  }
+
+  h2 em {
+    font-style: italic;
+    color: var(--blush);
+  }
+
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 26px;
+    color: var(--espresso);
+    margin-bottom: 12px;
+  }
+
+  p {
+    font-size: 15px;
+    color: #6B5B4E;
+    line-height: 1.85;
+    max-width: 600px;
+  }
+
+  /* ─── INTRO SECTION ─── */
+  .intro {
+    padding-top: 120px;
+    padding-bottom: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .intro-right {
+    padding-top: 60px;
+  }
+
+  .intro-right p { max-width: 100%; }
+
+  .intro-right .big-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--espresso);
+    line-height: 1.5;
+    margin-bottom: 24px;
+    padding-left: 20px;
+    border-left: 2px solid var(--blush);
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--taupe), transparent);
+    opacity: 0.3;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ─── SCOPE SECTION ─── */
+  .scope-bg {
+    background: var(--espresso);
+    padding: 100px 0;
+  }
+
+  .scope-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 80px;
+  }
+
+  .scope-bg h2 { color: var(--cream); }
+  .scope-bg .eyebrow { color: var(--taupe); }
+  .scope-bg .eyebrow::before { background: var(--taupe); }
+  .scope-bg p { color: rgba(245,239,230,0.6); }
+
+  .scope-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+  }
+
+  .scope-card {
+    background: rgba(245,239,230,0.04);
+    padding: 44px 36px;
+    border: 1px solid rgba(200,184,162,0.1);
+    transition: background 0.3s ease, transform 0.3s ease;
+    cursor: default;
+  }
+
+  .scope-card:hover {
+    background: rgba(245,239,230,0.07);
+    transform: translateY(-2px);
+  }
+
+  .scope-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 300;
+    color: rgba(212,168,154,0.2);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .scope-card h3 {
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+
+  .scope-card p {
+    font-size: 14px;
+    color: rgba(245,239,230,0.5);
+    line-height: 1.7;
+    max-width: 100%;
+  }
+
+  /* ─── PAGES SECTION ─── */
+  .pages-section {
+    padding: 100px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .pages-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+    align-items: end;
+  }
+
+  .pages-header p { max-width: 100%; }
+
+  .page-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--light-taupe);
+  }
+
+  .page-item {
+    padding: 24px 32px;
+    border-bottom: 1px solid var(--light-taupe);
+    border-right: 1px solid var(--light-taupe);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s ease;
+  }
+
+  .page-item:hover { background: var(--off-white); }
+
+  .page-item:nth-child(even) { border-right: none; }
+
+  .page-item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--espresso);
+  }
+
+  .page-item-cat {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    background: var(--light-taupe);
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+
+  /* ─── DESIGN SECTION ─── */
+  .design-bg {
+    background: var(--off-white);
+    padding: 100px 0;
+  }
+
+  .design-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 80px;
+  }
+
+  .palette-row {
+    display: flex;
+    gap: 0;
+    margin: 48px 0 60px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .swatch {
+    flex: 1;
+    position: relative;
+    cursor: default;
+    transition: flex 0.4s ease;
+  }
+
+  .swatch:hover { flex: 2.5; }
+
+  .swatch-label {
+    position: absolute;
+    bottom: 12px;
+    left: 14px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .swatch:hover .swatch-label { opacity: 1; }
+
+  .swatch-dark .swatch-label { color: rgba(245,239,230,0.7); }
+  .swatch-light .swatch-label { color: rgba(59,47,47,0.6); }
+
+  .font-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 60px;
+  }
+
+  .font-block {
+    padding: 40px;
+    background: var(--cream);
+    border: 1px solid var(--light-taupe);
+  }
+
+  .font-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin-bottom: 16px;
+  }
+
+  .font-sample-serif {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--espresso);
+  }
+
+  .font-sample-serif em { font-style: italic; }
+
+  .font-sample-sans {
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: #6B5B4E;
+    line-height: 1.8;
+    margin-top: 16px;
+  }
+
+  /* ─── BRAND GUIDELINES ─── */
+  .guidelines-section {
+    padding: 100px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .guidelines-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 72px;
+    align-items: end;
+  }
+
+  .guidelines-intro p { max-width: 100%; }
+
+  .guidelines-deliverable-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--espresso);
+    color: var(--cream);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    margin-bottom: 16px;
+  }
+
+  .guidelines-deliverable-tag::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--blush);
+  }
+
+  /* Color grid */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    margin-bottom: 64px;
+    border: 1px solid var(--light-taupe);
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .color-cell {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .color-swatch {
+    height: 100px;
+    width: 100%;
+  }
+
+  .color-info {
+    padding: 16px 14px;
+    background: var(--off-white);
+    border-top: 1px solid var(--light-taupe);
+    border-right: 1px solid var(--light-taupe);
+  }
+
+  .color-cell:last-child .color-info { border-right: none; }
+
+  .color-name {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--espresso);
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .color-hex {
+    font-size: 10px;
+    color: var(--taupe);
+    letter-spacing: 0.08em;
+    font-family: 'Jost', monospace;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .color-use {
+    font-size: 9.5px;
+    color: #9A8878;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+
+  /* Typography system */
+  .type-system {
+    margin-bottom: 64px;
+  }
+
+  .type-system-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--light-taupe);
+  }
+
+  .type-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .type-row {
+    display: grid;
+    grid-template-columns: 180px 1fr 200px;
+    gap: 24px;
+    align-items: center;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--light-taupe);
+  }
+
+  .type-row-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--taupe);
+  }
+
+  .type-row-sample { color: var(--espresso); }
+
+  .type-row-spec {
+    font-size: 11px;
+    color: #9A8878;
+    line-height: 1.6;
+    text-align: right;
+  }
+
+  /* Voice & Tone */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-bottom: 64px;
+  }
+
+  .voice-card {
+    padding: 36px;
+    background: var(--off-white);
+    border: 1px solid var(--light-taupe);
+  }
+
+  .voice-card-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin-bottom: 16px;
+  }
+
+  .voice-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .voice-card p {
+    font-size: 14px;
+    max-width: 100%;
+    color: #6B5B4E;
+  }
+
+  .voice-example {
+    margin-top: 16px;
+    padding: 14px 16px;
+    border-left: 2px solid var(--blush);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--espresso);
+    background: var(--cream);
+  }
+
+  /* Do / Don't */
+  .do-dont {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-bottom: 64px;
+  }
+
+  .do-card, .dont-card {
+    padding: 36px;
+    border: 1px solid var(--light-taupe);
+  }
+
+  .do-card { background: var(--off-white); }
+  .dont-card { background: #FAF5F5; }
+
+  .do-header, .dont-header {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .do-header { color: #7A9B7A; }
+  .dont-header { color: #B07070; }
+
+  .do-header::before {
+    content: '✓';
+    font-size: 14px;
+    font-family: 'Jost', sans-serif;
+  }
+
+  .dont-header::before {
+    content: '✕';
+    font-size: 14px;
+    font-family: 'Jost', sans-serif;
+  }
+
+  .do-item, .dont-item {
+    font-size: 14px;
+    color: #6B5B4E;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--light-taupe);
+    line-height: 1.5;
+  }
+
+  .do-item:last-child, .dont-item:last-child { border-bottom: none; }
+
+  /* Logo usage */
+  .logo-usage {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 16px;
+  }
+
+  .logo-usage-card {
+    padding: 36px 24px 24px;
+    border: 1px solid var(--light-taupe);
+    text-align: center;
+  }
+
+  .logo-mock {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-radius: 2px;
+  }
+
+  .logo-mock-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .logo-usage-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin-bottom: 8px;
+  }
+
+  .logo-usage-note {
+    font-size: 12px;
+    color: #9A8878;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .guidelines-section { padding-left: 32px; padding-right: 32px; }
+    .guidelines-intro { grid-template-columns: 1fr; gap: 32px; }
+    .color-grid { grid-template-columns: repeat(3, 1fr); }
+    .type-row { grid-template-columns: 1fr; gap: 8px; }
+    .type-row-spec { text-align: left; }
+    .voice-grid, .do-dont, .logo-usage { grid-template-columns: 1fr; }
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline-section {
+    padding: 100px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .timeline {
+    margin-top: 60px;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--taupe), transparent);
+    opacity: 0.3;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 32px;
+    margin-bottom: 48px;
+    align-items: start;
+  }
+
+  .timeline-dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--espresso);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .timeline-content h3 {
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--espresso);
+    margin-bottom: 8px;
+  }
+
+  .timeline-content p { font-size: 14px; max-width: 100%; }
+
+  .timeline-duration {
+    font-size: 11px;
+    color: var(--taupe);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+
+  /* ─── INVESTMENT ─── */
+  .investment-bg {
+    background: var(--espresso);
+    padding: 100px 0;
+  }
+
+  .investment-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 80px;
+  }
+
+  .investment-bg h2 { color: var(--cream); }
+  .investment-bg .eyebrow { color: var(--taupe); }
+  .investment-bg .eyebrow::before { background: var(--taupe); }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+  }
+
+  .pricing-card {
+    padding: 48px;
+    background: rgba(245,239,230,0.04);
+    border: 1px solid rgba(200,184,162,0.1);
+    position: relative;
+    transition: background 0.3s ease;
+  }
+
+  .pricing-card:hover { background: rgba(245,239,230,0.07); }
+
+  .pricing-card.featured {
+    background: rgba(212,168,154,0.1);
+    border-color: rgba(212,168,154,0.3);
+    grid-column: span 3;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .pricing-badge {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blush);
+    margin-bottom: 12px;
+  }
+
+  .pricing-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+
+  .pricing-card p {
+    font-size: 14px;
+    color: rgba(245,239,230,0.5);
+    max-width: 100%;
+  }
+
+  .pricing-amount {
+    text-align: right;
+  }
+
+  .pricing-amount .amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1;
+  }
+
+  .pricing-amount .period {
+    font-size: 12px;
+    color: rgba(245,239,230,0.4);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 8px;
+  }
+
+  .pricing-includes {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(200,184,162,0.1);
+  }
+
+  .pricing-includes li {
+    font-size: 13px;
+    color: rgba(245,239,230,0.5);
+    list-style: none;
+    padding: 6px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .pricing-includes li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--blush);
+    opacity: 0.6;
+  }
+
+  .pricing-note {
+    margin-top: 40px;
+    font-size: 13px;
+    color: rgba(245,239,230,0.35);
+    text-align: center;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+  }
+
+  /* ─── NEXT STEPS / CTA ─── */
+  .cta-section {
+    padding: 120px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-section h2 {
+    text-align: center;
+    max-width: 700px;
+  }
+
+  .cta-section p {
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 48px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--espresso);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 20px 48px;
+    border: 1px solid var(--espresso);
+    transition: background 0.3s ease, color 0.3s ease;
+    margin: 8px;
+  }
+
+  .cta-btn:hover {
+    background: var(--blush);
+    border-color: var(--blush);
+    color: var(--cream);
+  }
+
+  .cta-btn.outline {
+    background: transparent;
+    color: var(--espresso);
+  }
+
+  .cta-btn.outline:hover {
+    background: var(--espresso);
+    color: var(--cream);
+  }
+
+  .cta-contact {
+    margin-top: 60px;
+    font-size: 13px;
+    color: var(--taupe);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--dark);
+    padding: 40px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer .logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--taupe);
+    letter-spacing: 0.08em;
+  }
+
+  footer p {
+    font-size: 11px;
+    color: rgba(200,184,162,0.35);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    max-width: none;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    section, .scope-inner, .design-inner, .investment-inner, .pages-section,
+    .timeline-section, .cta-section { padding-left: 32px; padding-right: 32px; }
+    .cover-content, .cover-meta { padding-left: 32px; padding-right: 32px; }
+    .intro { grid-template-columns: 1fr; gap: 40px; }
+    .scope-grid { grid-template-columns: 1fr; }
+    .font-showcase { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .pricing-card.featured { grid-template-columns: 1fr; gap: 24px; }
+    .pricing-amount { text-align: left; }
+    .pages-header { grid-template-columns: 1fr; }
+    .page-list { grid-template-columns: 1fr; }
+    .page-item { border-right: none; }
+    .cover-deco { display: none; }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── COVER ─── -->
+<div class="cover">
+  <div class="cover-bg"></div>
+  <div class="cover-grid-lines"></div>
+  <div class="cover-deco"></div>
+
+  <div class="cover-content">
+    <div class="cover-eyebrow">Website Design & Development Proposal</div>
+    <h1 class="cover-title">
+      Lauren Bays<br>
+      <em>Beauty</em>
+    </h1>
+    <p class="cover-sub">A custom website designed to convert your Instagram audience into loyal, booked clients — and showcase your expertise in aesthetic skincare.</p>
+  </div>
+
+  <div class="cover-meta">
+    <div class="cover-meta-item">Prepared for<span>Lauren Bays Beauty</span></div>
+    <div class="cover-meta-item">Project Type<span>Custom Website Design</span></div>
+    <div class="cover-meta-item">Date<span>February 2026</span></div>
+    <div class="cover-meta-item">Pages<span>16 Total</span></div>
+  </div>
+</div>
+
+
+<!-- ─── INTRO ─── -->
+<section class="intro reveal">
+  <div class="intro-left">
+    <div class="eyebrow">Overview</div>
+    <h2>Your brand deserves a home as beautiful as your results.</h2>
+  </div>
+  <div class="intro-right">
+    <p class="big-quote">"You've built something exceptional on Instagram. Now let's build the website that turns those followers into appointments."</p>
+    <p>Lauren Bays Beauty offers some of the most advanced aesthetic treatments available — from BBL laser and HALO resurfacing to custom microneedling and RF skin tightening. The website needs to earn that same level of trust and sophistication at first glance.</p>
+    <br>
+    <p>This proposal outlines a fully custom website: designed in your brand's earthy, warm palette, written with copy that educates and converts, and structured to make booking effortless from any device.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── SCOPE ─── -->
+<div class="scope-bg">
+  <div class="scope-inner">
+    <div class="eyebrow reveal">Scope of Work</div>
+    <h2 class="reveal">Everything included,<br><em>nothing left out.</em></h2>
+
+    <div class="scope-grid">
+      <div class="scope-card reveal">
+        <div class="scope-number">01</div>
+        <h3>Design System</h3>
+        <p>Custom color palette, typography pairing (Cormorant Garamond + Jost), button styles, spacing system, and photo direction — all documented for long-term brand consistency.</p>
+      </div>
+      <div class="scope-card reveal">
+        <div class="scope-number">02</div>
+        <h3>16 Pages Built</h3>
+        <p>Home, About (with provider listings), 13 service-specific pages, and a Contact page — each with custom layout, copy, and imagery direction tailored to the service.</p>
+        <p>Benefit-led copy written for every page — hero headlines, service descriptions, what-to-expect sections, and CTAs — optimized for both the reader and search engines.</p>
+      </div>
+      <div class="scope-card reveal">
+        <div class="scope-number">04</div>
+        <h3>Mangomint Integration</h3>
+        <p>Your Mangomint booking link woven throughout the site — nav button, hero CTAs, service pages, and contact page — so the path to booking is never more than one click away.</p>
+        <p>Page titles, meta descriptions, URL slugs, image alt text, and Google Search Console setup — so your site starts building organic visibility from day one.</p>
+      </div>
+      <div class="scope-card reveal">
+        <div class="scope-number">06</div>
+        <h3>Brand Guidelines</h3>
+        <p>Your custom color palette, typography system, and visual identity — documented and delivered so your brand stays consistent across every future touchpoint.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ─── PAGE LIST ─── -->
+<div class="pages-section reveal">
+  <div class="pages-header">
+    <div>
+      <div class="eyebrow">Site Map</div>
+      <h2>16 pages,<br><em>fully built.</em></h2>
+    </div>
+    <p>Each service page follows a consistent, high-converting template — hero, treatment description, ideal candidate, pricing, what to expect, and a booking CTA. Built once, duplicated and customized for each service.</p>
+  </div>
+
+  <div class="page-list">
+    <div class="page-item"><span class="page-item-name">Home</span><span class="page-item-cat">Core</span></div>
+    <div class="page-item"><span class="page-item-name">About + Providers</span><span class="page-item-cat">Core</span></div>
+    <div class="page-item"><span class="page-item-name">Facials</span><span class="page-item-cat">Service</span></div>
+    <div class="page-item"><span class="page-item-name">Chemical Peels</span><span class="page-item-cat">Service</span></div>
+    <div class="page-item"><span class="page-item-name">Microneedling</span><span class="page-item-cat">Service</span></div>
+    <div class="page-item"><span class="page-item-name">Radio Frequency</span><span class="page-item-cat">Service</span></div>
+    <div class="page-item"><span class="page-item-name">BBL Laser</span><span class="page-item-cat">Service</span></div>
+    <div class="page-item"><span class="page-item-name">HALO Laser</span><span class="page-item-cat">Service</span></div>
+    <div class="page-item"><span class="page-item-name">MOXI Laser</span><span class="page-item-cat">Service</span></div>
+    <div class="page-item"><span class="page-item-name">SkinTyte</span><span class="page-item-cat">Service</span></div>
+    <div class="page-item"><span class="page-item-name">ProFractional & TRL</span><span class="page-item-cat">Service</span></div>
+    <div class="page-item"><span class="page-item-name">Laser Hair Removal</span><span class="page-item-cat">Service</span></div>
+    <div class="page-item"><span class="page-item-name">Custom Brows</span><span class="page-item-cat">Service</span></div>
+    <div class="page-item"><span class="page-item-name">Hair Restoration</span><span class="page-item-cat">Service</span></div>
+    <div class="page-item"><span class="page-item-name">Tint & Wax</span><span class="page-item-cat">Service</span></div>
+    <div class="page-item"><span class="page-item-name">Contact</span><span class="page-item-cat">Core</span></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+
+<!-- ─── DESIGN SECTION ─── -->
+<div class="design-bg">
+  <div class="design-inner">
+    <div class="eyebrow reveal">Brand Identity & Design System</div>
+    <h2 class="reveal">Your brand, defined.<br><em>Your identity, yours to keep.</em></h2>
+    <p class="reveal" style="margin-bottom: 0; max-width: 600px;">Included in this project is a fully developed brand design system — your custom color palette, typography pairing, and visual guidelines — delivered as a reference you can use across all future touchpoints: social, print, packaging, and beyond.</p>
+
+    <div class="palette-row reveal">
+      <div class="swatch swatch-light" style="background:#F5EFE6;">
+        <span class="swatch-label">Warm Cream</span>
+      </div>
+      <div class="swatch swatch-light" style="background:#EDE5DA;">
+        <span class="swatch-label">Off-White</span>
+      </div>
+      <div class="swatch swatch-light" style="background:#C8B8A2;">
+        <span class="swatch-label">Soft Taupe</span>
+      </div>
+      <div class="swatch swatch-light" style="background:#D4A89A;">
+        <span class="swatch-label">Dusty Blush</span>
+      </div>
+      <div class="swatch swatch-dark" style="background:#3B2F2F;">
+        <span class="swatch-label">Deep Espresso</span>
+      </div>
+      <div class="swatch swatch-dark" style="background:#2C2118;">
+        <span class="swatch-label">Dark Roast</span>
+      </div>
+    </div>
+
+    <div class="font-showcase reveal">
+      <div class="font-block">
+        <div class="font-label">Display Typeface — Cormorant Garamond</div>
+        <div class="font-sample-serif">Your skin,<br><em>reimagined.</em></div>
+        <div class="font-sample-sans">Used for all headings, hero text, and pull quotes. Communicates elegance, craft, and timeless beauty.</div>
+      </div>
+      <div class="font-block">
+        <div class="font-label">Body Typeface — Jost</div>
+        <div style="font-family:'Jost',sans-serif; font-size: 32px; font-weight:300; color: #3B2F2F; line-height:1.2; margin-bottom: 16px;">Clean. Modern.<br>Effortlessly readable.</div>
+        <div class="font-sample-sans">Used for body copy, navigation, labels, and CTAs. Provides structure and clarity without sacrificing warmth.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ─── BRAND GUIDELINES ─── -->
+<div class="guidelines-section">
+  <div class="guidelines-intro reveal">
+    <div>
+      <div class="eyebrow">Deliverable</div>
+      <h2>Brand Guidelines,<br><em>built for you.</em></h2>
+    </div>
+    <div>
+      <div class="guidelines-deliverable-tag">Included in this project</div>
+      <p>Your website isn't the end — it's the foundation. Alongside the site, you'll receive a complete Brand Guidelines document covering your color system, typography, voice & tone, logo usage, and visual do's and don'ts. Use it for future designers, social media managers, or any collaborator who touches your brand.</p>
+    </div>
+  </div>
+
+  <!-- COLOR SYSTEM -->
+  <div class="type-system-label reveal">01 — Color System</div>
+  <div class="color-grid reveal">
+    <div class="color-cell">
+      <div class="color-swatch" style="background:#F5EFE6;"></div>
+      <div class="color-info">
+        <span class="color-name">Warm Cream</span>
+        <span class="color-hex">#F5EFE6</span>
+        <span class="color-use">Primary background. Hero sections. Card fills.</span>
+      </div>
+    </div>
+    <div class="color-cell">
+      <div class="color-swatch" style="background:#FAF7F3;"></div>
+      <div class="color-info">
+        <span class="color-name">Off-White</span>
+        <span class="color-hex">#FAF7F3</span>
+        <span class="color-use">Alternate section backgrounds. Form fields.</span>
+      </div>
+    </div>
+    <div class="color-cell">
+      <div class="color-swatch" style="background:#EDE5DA;"></div>
+      <div class="color-info">
+        <span class="color-name">Light Taupe</span>
+        <span class="color-hex">#EDE5DA</span>
+        <span class="color-use">Borders. Dividers. Subtle card outlines.</span>
+      </div>
+    </div>
+    <div class="color-cell">
+      <div class="color-swatch" style="background:#C8B8A2;"></div>
+      <div class="color-info">
+        <span class="color-name">Soft Taupe</span>
+        <span class="color-hex">#C8B8A2</span>
+        <span class="color-use">Labels. Eyebrows. Secondary text. Accents.</span>
+      </div>
+    </div>
+    <div class="color-cell">
+      <div class="color-swatch" style="background:#D4A89A;"></div>
+      <div class="color-info">
+        <span class="color-name">Dusty Blush</span>
+        <span class="color-hex">#D4A89A</span>
+        <span class="color-use">Button hover. Pull-quote accents. Highlights.</span>
+      </div>
+    </div>
+    <div class="color-cell">
+      <div class="color-swatch" style="background:#3B2F2F;"></div>
+      <div class="color-info">
+        <span class="color-name">Deep Espresso</span>
+        <span class="color-hex">#3B2F2F</span>
+        <span class="color-use">Headlines. Nav. Footer. Primary buttons.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TYPOGRAPHY -->
+  <div class="type-system reveal">
+    <div class="type-system-label">02 — Typography System</div>
+    <div class="type-rows">
+      <div class="type-row">
+        <div class="type-row-label">Display / H1</div>
+        <div class="type-row-sample" style="font-family:'Cormorant Garamond',serif; font-size:42px; font-weight:300; line-height:1.0; letter-spacing:-0.02em;">Your skin, <em style="font-style:italic;color:#D4A89A;">transformed.</em></div>
+        <div class="type-row-spec">Cormorant Garamond<br>Weight 300 · −0.02em tracking<br>Used: Hero headlines</div>
+      </div>
+      <div class="type-row">
+        <div class="type-row-label">Heading / H2</div>
+        <div class="type-row-sample" style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:400; line-height:1.15;">Results that speak for themselves.</div>
+        <div class="type-row-spec">Cormorant Garamond<br>Weight 400 · Default tracking<br>Used: Section headings</div>
+      </div>
+      <div class="type-row">
+        <div class="type-row-label">Subheading / H3</div>
+        <div class="type-row-sample" style="font-family:'Jost',sans-serif; font-size:16px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase;">HALO Laser Treatment</div>
+        <div class="type-row-spec">Jost<br>Weight 500 · 0.08em tracking<br>Used: Card titles, service names</div>
+      </div>
+      <div class="type-row">
+        <div class="type-row-label">Body Copy</div>
+        <div class="type-row-sample" style="font-family:'Jost',sans-serif; font-size:15px; font-weight:300; line-height:1.85; color:#6B5B4E;">Every treatment is thoughtfully designed around your unique skin, your goals, and the results you deserve.</div>
+        <div class="type-row-spec">Jost<br>Weight 300 · 15–16px · 1.8 line height<br>Used: All body copy</div>
+      </div>
+      <div class="type-row">
+        <div class="type-row-label">Eyebrow / Label</div>
+        <div class="type-row-sample" style="font-family:'Jost',sans-serif; font-size:10px; font-weight:500; letter-spacing:0.25em; text-transform:uppercase; color:#C8B8A2;">Services & Treatments</div>
+        <div class="type-row-spec">Jost<br>Weight 500 · 0.25em tracking · All-caps<br>Used: Section labels, categories</div>
+      </div>
+      <div class="type-row">
+        <div class="type-row-label">Button / CTA</div>
+        <div class="type-row-sample" style="display:inline-block; background:#3B2F2F; color:#F5EFE6; font-family:'Jost',sans-serif; font-size:11px; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; padding:12px 28px;">BOOK NOW</div>
+        <div class="type-row-spec">Jost<br>Weight 500 · 0.22em tracking · All-caps<br>Used: All CTAs and buttons</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VOICE & TONE -->
+  <div class="type-system-label reveal">03 — Voice & Tone</div>
+  <div class="voice-grid reveal">
+    <div class="voice-card">
+      <div class="voice-card-label">Confident</div>
+      <h3>Expert, never clinical.</h3>
+      <p>Lauren Bays Beauty speaks with the authority of someone who has seen thousands of clients — but never talks down to them. Use precise language that builds trust without jargon overload.</p>
+      <div class="voice-example">"BBL targets the root cause of sun damage and redness — not just the surface."</div>
+    </div>
+    <div class="voice-card">
+      <div class="voice-card-label">Warm</div>
+      <h3>Inviting, not salesy.</h3>
+      <p>The brand feels like a trusted friend who happens to be a skincare expert. Copy should feel like a conversation — direct, caring, and always focused on the client's outcome.</p>
+      <div class="voice-example">"Not sure where to start? That's exactly what your free Skin Analysis is for."</div>
+    </div>
+    <div class="voice-card">
+      <div class="voice-card-label">Aspirational</div>
+      <h3>Results-driven, not promise-heavy.</h3>
+      <p>Speak to transformation without overpromising. Lead with real outcomes — glow, confidence, consistency — over superlatives. Let the results do the talking.</p>
+      <div class="voice-example">"Clients notice the difference after one session. Lasting change builds over time."</div>
+    </div>
+    <div class="voice-card">
+      <div class="voice-card-label">Refined</div>
+      <h3>Luxe without the pretension.</h3>
+      <p>The brand sits at the intersection of luxury and approachability. Copy is polished and intentional — never stiff, never casual to the point of cheapening the experience.</p>
+      <div class="voice-example">"This is your hour. We'll handle everything else."</div>
+    </div>
+  </div>
+
+  <!-- DO / DON'T -->
+  <div class="type-system-label reveal">04 — Visual Do's & Don'ts</div>
+  <div class="do-dont reveal">
+    <div class="do-card">
+      <div class="do-header">Do</div>
+      <div class="do-item">Use warm, soft-lit photography on neutral cream or linen backgrounds</div>
+      <div class="do-item">Feature close-up skin and treatment shots that show texture and glow</div>
+      <div class="do-item">Leave generous white space — the brand breathes</div>
+      <div class="do-item">Use Cormorant Garamond in italic for editorial elegance</div>
+      <div class="do-item">Keep copy concise, benefit-led, and client-focused</div>
+      <div class="do-item">Use the espresso + cream combination as the default high-contrast pairing</div>
+    </div>
+    <div class="dont-card">
+      <div class="dont-header">Don't</div>
+      <div class="dont-item">Don't use cool, blue-toned or overly bright white backgrounds</div>
+      <div class="dont-item">Don't use clinical before/after imagery without proper framing and context</div>
+      <div class="dont-item">Don't clutter layouts — one focal point per section</div>
+      <div class="dont-item">Don't use more than two typefaces or introduce new fonts</div>
+      <div class="dont-item">Don't use hype language — words like "revolutionary," "miracle," or "instant results"</div>
+      <div class="dont-item">Don't stretch, recolor, or alter the logo in any way</div>
+    </div>
+  </div>
+
+  <!-- LOGO USAGE -->
+  <div class="type-system-label reveal">05 — Logo Usage</div>
+  <div class="logo-usage reveal">
+    <div class="logo-usage-card">
+      <div class="logo-mock" style="background:#F5EFE6;">
+        <span class="logo-mock-text" style="color:#3B2F2F;">LB · LAUREN BAYS</span>
+      </div>
+      <div class="logo-usage-label">Primary — Light Backgrounds</div>
+      <div class="logo-usage-note">Default usage. Espresso logotype on cream or off-white. Preferred for all web and print applications.</div>
+    </div>
+    <div class="logo-usage-card">
+      <div class="logo-mock" style="background:#3B2F2F;">
+        <span class="logo-mock-text" style="color:#F5EFE6;">LB · LAUREN BAYS</span>
+      </div>
+      <div class="logo-usage-label">Reversed — Dark Backgrounds</div>
+      <div class="logo-usage-note">Cream logotype on espresso. Used in footer, dark section overlays, and promotional materials.</div>
+    </div>
+    <div class="logo-usage-card">
+      <div class="logo-mock" style="background:#EDE5DA; border: 2px dashed #C8B8A2;">
+        <span class="logo-mock-text" style="color:#C8B8A2; opacity:0.5;">DO NOT USE</span>
+      </div>
+      <div class="logo-usage-label">Avoid — Busy Backgrounds</div>
+      <div class="logo-usage-note">Never place the logo over photography or patterned backgrounds without a solid overlay behind it.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+
+
+<!-- ─── TIMELINE ─── -->
+<div class="timeline-section">
+  <div class="eyebrow reveal">Process & Timeline</div>
+  <h2 class="reveal">From kickoff to launch<br><em>in 3–4 weeks.</em></h2>
+
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-dot">1</div>
+      <div class="timeline-content">
+        <h3>Discovery & Assets</h3>
+        <p>We'll kick off with a short intake form covering your brand preferences, provider bios, location/hours, and any existing photos or logos. You'll also share any client reviews you'd like featured.</p>
+        <div class="timeline-duration">Days 1–3</div>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-dot">2</div>
+      <div class="timeline-content">
+        <h3>Brand Identity & Design</h3>
+        <p>Your custom design system developed and documented — color palette, fonts, spacing, button styles, voice & tone guide, and logo usage rules. Home and About pages built first as the design proof-of-concept for your approval.</p>
+        <div class="timeline-duration">Days 4–8</div>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-dot">3</div>
+      <div class="timeline-content">
+        <h3>Service Pages & Copy</h3>
+        <p>All 13 service pages built and populated with finalized copy, pricing, and imagery. You'll receive a review link to leave feedback before anything is locked in.</p>
+        <div class="timeline-duration">Days 9–16</div>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-dot">4</div>
+      <div class="timeline-content">
+        <h3>Revisions & Polish</h3>
+        <p>One round of revisions included. Final mobile review, SEO setup, contact form testing, and all booking links confirmed.</p>
+        <div class="timeline-duration">Days 17–22</div>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-dot">5</div>
+      <div class="timeline-content">
+        <h3>Launch</h3>
+        <p>Domain connected, site published, Google Search Console submitted. You receive a handoff document with login credentials, how to update content, and tips for ongoing maintenance.</p>
+        <div class="timeline-duration">Day 23–28</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+
+<!-- ─── INVESTMENT ─── -->
+<div class="investment-bg">
+  <div class="investment-inner">
+    <div class="eyebrow reveal">Investment</div>
+    <h2 class="reveal">Simple pricing,<br><em>no surprises.</em></h2>
+
+    <div class="pricing-grid">
+      <div class="pricing-card reveal">
+        <div class="pricing-badge">Included</div>
+        <h3>Design & Build</h3>
+        <p>Full custom website — 16 pages, custom design system, all layouts and styling.</p>
+        <ul class="pricing-includes">
+          <li>Custom design system (color, type, buttons)</li>
+          <li>All 16 pages built</li>
+          <li>Responsive, mobile-optimized layouts</li>
+          <li>Mangomint booking integration</li>
+        </ul>
+      </div>
+
+      <div class="pricing-card reveal">
+        <div class="pricing-badge">Included</div>
+        <h3>Copywriting & SEO</h3>
+        <p>Professional copy for every page and SEO setup to start building organic visibility.</p>
+        <ul class="pricing-includes">
+          <li>All page copy written</li>
+          <li>Meta titles & descriptions</li>
+          <li>Image alt text</li>
+          <li>Search Console submission</li>
+        </ul>
+      </div>
+
+      <div class="pricing-card reveal">
+        <div class="pricing-badge">Included</div>
+        <h3>Brand Guidelines</h3>
+        <p>A complete, documented brand identity system delivered alongside your website — yours to use forever.</p>
+        <ul class="pricing-includes">
+          <li>Full color palette with hex codes & usage rules</li>
+          <li>Typography system with hierarchy specs</li>
+          <li>Voice & tone guide</li>
+          <li>Logo usage do's & don'ts</li>
+        </ul>
+      </div>
+
+      <div class="pricing-card featured reveal">
+        <div>
+          <div class="pricing-badge">Complete Package</div>
+          <h3>Website + Brand Guidelines, delivered in 4 weeks.</h3>
+          <p>One flat rate. Includes custom design, 16-page website build, all copywriting, SEO foundation, Mangomint integration, brand guidelines document, 1 revision round, and full handoff.</p>
+        </div>
+        <div class="pricing-amount">
+          <div class="amount">$3,250</div>
+          <span class="period">Flat rate · One-time</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="pricing-note">50% due to begin, 50% due at launch.</p>
+  </div>
+</div>
+
+
+<!-- ─── CTA ─── -->
+<section class="cta-section reveal">
+  <div class="eyebrow" style="justify-content:center;">Next Steps</div>
+  <h2>Ready to build something beautiful?</h2>
+  <p>If this proposal feels like the right fit, the next step is a quick 20-minute call to walk through the project, answer any questions, and confirm the timeline. No commitment required.</p>
+  <div>
+    <a href="mailto:hello@example.com" class="cta-btn">Schedule a Call</a>
+    <a href="#" class="cta-btn outline">Download Build Guide</a>
+  </div>
+  <p class="cta-contact">Questions? Reach out anytime — <em>hello@[youremail].com</em></p>
+</section>
+
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="logo-text">Lauren Bays Beauty</div>
+  <p>Proposal prepared February 2026</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
